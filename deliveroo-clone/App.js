@@ -1,16 +1,21 @@
+import { NavigationContainer } from "@react-navigation/native"
+import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { StatusBar } from "expo-status-bar"
 import { styled, withExpoSnack } from "nativewind"
 import { StyleSheet, Text, View } from "react-native"
+import HomeScreen from "./screens/HomeScreen"
 
-const StylesView = styled(View)
+
+const Stack = createNativeStackNavigator()
 
 const App = () => {
    return (
-      <StylesView className="bg-blue-500">
-         <Text>Open up App.js to start working on your app!</Text>
-         <StatusBar style="auto" />
-      </StylesView>
+      <NavigationContainer>
+         <Stack.Navigator>
+            <Stack.Screen name="Home" component={HomeScreen}/>
+         </Stack.Navigator>
+      </NavigationContainer>
    )
 }
 
-export default withExpoSnack(App)
+export default App
