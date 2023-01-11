@@ -1,24 +1,16 @@
 import { StatusBar } from "expo-status-bar"
-import { withExpoSnack } from "nativewind"
+import { styled, withExpoSnack } from "nativewind"
 import { StyleSheet, Text, View } from "react-native"
+
+const StylesView = styled(View)
 
 const App = () => {
    return (
-      <View style={styles.container}>
+      <StylesView className="bg-blue-500">
          <Text>Open up App.js to start working on your app!</Text>
          <StatusBar style="auto" />
-      </View>
+      </StylesView>
    )
 }
-
-const styles = StyleSheet.create({
-   container: {
-      flex: 1,
-      backgroundColor: "#fff",
-      alignItems: "center",
-      justifyContent: "center",
-   },
-})
-
 
 export default withExpoSnack(App)
