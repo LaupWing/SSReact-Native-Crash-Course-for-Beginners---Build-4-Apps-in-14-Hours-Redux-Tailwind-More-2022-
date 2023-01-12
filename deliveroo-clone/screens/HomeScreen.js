@@ -9,6 +9,7 @@ import {
    AdjustmentsVerticalIcon
 } from "react-native-heroicons/outline"
 import Categories from "../components/Categories"
+import FeaturedRow from "../components/FeaturedRow"
 
 const StyledText = styled(Text)
 const StyledImage = styled(Image)
@@ -63,6 +64,21 @@ const HomeScreen = () => {
             }}
          >
             <Categories/>
+            <FeaturedRow
+               title={"Featured"}
+               description={"Paid placements from our partners"}
+               id={"123"}
+            />
+            <FeaturedRow
+               title={"Featured"}
+               description={"Paid placements from our partners"}
+               id={"1234"}
+            />
+            <FeaturedRow
+               title={"Featured"}
+               description={"Paid placements from our partners"}
+               id={"12345"}
+            />
          </StyledScrollView>
       </StyledSafeAreaView>
    )
