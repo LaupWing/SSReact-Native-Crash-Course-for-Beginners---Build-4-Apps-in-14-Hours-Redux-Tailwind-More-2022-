@@ -1,6 +1,7 @@
 import { styled } from "nativewind"
 import { ScrollView, Text, View } from "react-native"
 import { ArrowRightIcon } from "react-native-heroicons/outline"
+import RestaurantCard from "./RestaurantCard"
 
 const StyledView = styled(View)
 const StyledText = styled(Text)
@@ -26,7 +27,18 @@ const FeaturedRow = ({ title, description, id}) => {
             }}
             showsHorizontalScrollIndicator={false}
          >
-            
+            <RestaurantCard
+               id={123}
+               imgUrl={"https://links.papareact.com/gn7"}
+               title={"Yo! Sushi"}
+               rating={4.5}
+               genre={"Japanese"}
+               address={"123 Main street"}
+               short_description={"This is a Test description"}
+               dishes={[]}
+               long={20}
+               lat={0}
+            />
          </StyledScrollView>
       </View>
    )

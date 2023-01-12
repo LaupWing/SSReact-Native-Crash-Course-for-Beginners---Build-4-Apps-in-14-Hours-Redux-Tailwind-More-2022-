@@ -1,4 +1,9 @@
-import { View, Text } from "react-native"
+import { styled } from "nativewind"
+import { View, Text, TouchableOpacity, Image } from "react-native"
+
+const StyledTouchableOpacity = styled(TouchableOpacity)
+const StyledImage = styled(Image)
+const StyledText = styled(Text)
 
 const RestaurantCard = ({
    id,
@@ -13,9 +18,17 @@ const RestaurantCard = ({
    lat
 }) => {
    return (
-      <View>
-         <Text>RestaurantCard</Text>
-      </View>
+      <StyledTouchableOpacity className="">
+         <StyledImage
+            source={{
+               uri: imgUrl
+            }}
+            className="w-64 h-36 rounded-sm"
+         />
+         <View>
+            <StyledText className="font-bold text-lg pt-2">{title}</StyledText>
+         </View>
+      </StyledTouchableOpacity>
    )
 }
 
