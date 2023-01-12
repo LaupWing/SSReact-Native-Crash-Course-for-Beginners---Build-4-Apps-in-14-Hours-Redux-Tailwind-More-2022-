@@ -1,11 +1,15 @@
 import { useNavigation } from "@react-navigation/native"
 import { styled } from "nativewind"
 import { useLayoutEffect } from "react"
-import { Image, SafeAreaView, StatusBar, Text, View } from "react-native"
+import { Image, SafeAreaView, Text, View } from "react-native"
+import {
+   ChevronDownIcon, UserIcon
+} from "react-native-heroicons/outline"
 
 const StyledText = styled(Text)
 const StyledImage = styled(Image)
 const StyledView = styled(View)
+const StyledSafeAreaView = styled(SafeAreaView)
 
 const HomeScreen = () => {
    const navigation = useNavigation()
@@ -17,7 +21,7 @@ const HomeScreen = () => {
    }, [])
 
    return (
-      <SafeAreaView>
+      <StyledSafeAreaView className="bg-white pt-5">
          <StyledView className="flex-row pb-3 items-center mx-4 space-x-2">
             <StyledImage
                source={{
@@ -25,16 +29,18 @@ const HomeScreen = () => {
                }}
                className="h-7 w-7 bg-gray-300 rounded-full"
             />
-            <View>
+            <StyledView className="flex-1">
                <StyledText className="font-bold text-gray-400 text-xs">
                   Deliver now
                </StyledText>
                <StyledText className="font-bold text-xl">
-                  Deliver now
+                  Current Locastion
+                  <ChevronDownIcon size={20} color="#00CCBB"/>
                </StyledText>
-            </View>
+            </StyledView>
+            <UserIcon size={35}  color="#00CCBB"/>
          </StyledView>
-      </SafeAreaView>
+      </StyledSafeAreaView>
    )
 }
 
