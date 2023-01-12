@@ -44,10 +44,13 @@ const HomeScreen = () => {
             <UserIcon size={35}  color="#00CCBB"/>
 
          </StyledView>
-         <StyledView>
-            <StyledView>
-               <MagnifyingGlassIcon/>
-               <TextInput/>
+         <StyledView className="flex-row items-center space-x-2 pb-2 mx-4">
+            <StyledView className="flex-row space-x-2 flex-1 bg-gray-200 p-3">
+               <MagnifyingGlassIcon color={"gray"} size={20}/>
+               <TextInput 
+                  placeholder="Restaurants and cuisines"
+                  keyboardType="default"
+               />
             </StyledView>   
             <AdjustmentsVerticalIcon color="#00CCBB"/>
          </StyledView>
