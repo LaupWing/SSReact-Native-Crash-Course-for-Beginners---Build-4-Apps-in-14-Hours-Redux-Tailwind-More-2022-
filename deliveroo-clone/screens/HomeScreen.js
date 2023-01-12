@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native"
 import { styled } from "nativewind"
 import { useLayoutEffect } from "react"
-import { Image, SafeAreaView, Text, View } from "react-native"
+import { Image, SafeAreaView, StatusBar, Text, View } from "react-native"
 
 const StyledText = styled(Text)
 const StyledImage = styled(Image)
@@ -17,6 +17,7 @@ const HomeScreen = () => {
 
    return (
       <SafeAreaView>
+         <StatusBar/>
          <View>
             <StyledImage
                source={{
