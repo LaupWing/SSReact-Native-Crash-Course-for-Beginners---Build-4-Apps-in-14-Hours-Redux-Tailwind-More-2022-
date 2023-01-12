@@ -21,7 +21,7 @@ const RestaurantCard = ({
    lat
 }) => {
    return (
-      <StyledTouchableOpacity className="">
+      <StyledTouchableOpacity className="bg-white mr-3 shadow">
          <StyledImage
             source={{
                uri: imgUrl
@@ -34,6 +34,12 @@ const RestaurantCard = ({
                <StarIcon color={"green"} opacity={0.5} size={22}/>
                <StyledText className="text-gray-500">
                   <StyledText className="text-green-500">{rating}</StyledText> . {genre}
+               </StyledText>
+            </StyledView>
+            <StyledView className="flex-row items-center space-x-1">
+               <MapPinIcon color={"gray"} opacity={0.4} size={22}/>
+               <StyledText>
+                  Nearby . {address}
                </StyledText>
             </StyledView>
          </StyledView>
