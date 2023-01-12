@@ -1,18 +1,20 @@
 import { useNavigation } from "@react-navigation/native"
 import { styled } from "nativewind"
 import { useLayoutEffect } from "react"
-import { Image, SafeAreaView, Text, TextInput, View } from "react-native"
+import { Image, SafeAreaView, ScrollView, Text, TextInput, View } from "react-native"
 import {
    ChevronDownIcon, 
    UserIcon,
    MagnifyingGlassIcon,
    AdjustmentsVerticalIcon
 } from "react-native-heroicons/outline"
+import Categories from "../components/Categories"
 
 const StyledText = styled(Text)
 const StyledImage = styled(Image)
 const StyledView = styled(View)
 const StyledSafeAreaView = styled(SafeAreaView)
+const StyledScrollView = styled(ScrollView)
 
 const HomeScreen = () => {
    const navigation = useNavigation()
@@ -54,6 +56,9 @@ const HomeScreen = () => {
             </StyledView>   
             <AdjustmentsVerticalIcon color="#00CCBB"/>
          </StyledView>
+         <StyledScrollView className="bg-gray-100">
+            <Categories/>
+         </StyledScrollView>
       </StyledSafeAreaView>
    )
 }
