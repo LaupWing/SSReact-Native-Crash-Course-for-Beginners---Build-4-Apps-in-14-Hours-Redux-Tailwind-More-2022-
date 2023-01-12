@@ -1,9 +1,12 @@
 import { useNavigation } from "@react-navigation/native"
 import { styled } from "nativewind"
 import { useLayoutEffect } from "react"
-import { Image, SafeAreaView, Text, View } from "react-native"
+import { Image, SafeAreaView, Text, TextInput, View } from "react-native"
 import {
-   ChevronDownIcon, UserIcon
+   ChevronDownIcon, 
+   UserIcon,
+   MagnifyingGlassIcon,
+   AdjustmentsVerticalIcon
 } from "react-native-heroicons/outline"
 
 const StyledText = styled(Text)
@@ -39,6 +42,14 @@ const HomeScreen = () => {
                </StyledText>
             </StyledView>
             <UserIcon size={35}  color="#00CCBB"/>
+
+         </StyledView>
+         <StyledView>
+            <StyledView>
+               <MagnifyingGlassIcon/>
+               <TextInput/>
+            </StyledView>   
+            <AdjustmentsVerticalIcon color="#00CCBB"/>
          </StyledView>
       </StyledSafeAreaView>
    )
