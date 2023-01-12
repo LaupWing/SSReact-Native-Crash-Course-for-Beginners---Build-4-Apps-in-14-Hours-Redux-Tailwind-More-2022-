@@ -17,7 +17,6 @@ const HomeScreen = () => {
 
    return (
       <SafeAreaView>
-         <StatusBar/>
          <View>
             <StyledImage
                source={{
