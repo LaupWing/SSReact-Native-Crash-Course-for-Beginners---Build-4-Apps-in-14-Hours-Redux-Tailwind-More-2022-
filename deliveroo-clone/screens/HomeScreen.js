@@ -27,7 +27,7 @@ const HomeScreen = () => {
 
    return (
       <StyledSafeAreaView className="bg-white pt-5">
-         <StyledView className="flex-row pb-3 items-center mx-4 space-x-2 px-2">
+         <StyledView className="flex-row pb-3 items-center mx-4 space-x-2">
             <StyledImage
                source={{
                   uri: "https://links.papareact.com/wru"
@@ -56,7 +56,12 @@ const HomeScreen = () => {
             </StyledView>   
             <AdjustmentsVerticalIcon color="#00CCBB"/>
          </StyledView>
-         <StyledScrollView className="bg-gray-100">
+         <StyledScrollView 
+            className="bg-gray-100"
+            contentContainerStyle={{
+               paddingBottom: 100
+            }}
+         >
             <Categories/>
          </StyledScrollView>
       </StyledSafeAreaView>
