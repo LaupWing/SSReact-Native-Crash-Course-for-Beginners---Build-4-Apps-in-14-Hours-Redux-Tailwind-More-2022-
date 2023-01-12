@@ -7,10 +7,10 @@ const StyledText = styled(Text)
 const StyledImage = styled(Image)
 
 const HomeScreen = () => {
-   const naviagtion = useNavigation()
+   const navigation = useNavigation()
 
    useLayoutEffect(()=>{
-      naviagtion.setOptions({
+      navigation.setOptions({
          headerShown: false
       })
    }, [])
