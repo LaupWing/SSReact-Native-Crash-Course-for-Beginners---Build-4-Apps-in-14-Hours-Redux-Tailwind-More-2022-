@@ -2,6 +2,7 @@ import { styled } from "nativewind"
 import { View, Text, TouchableOpacity, Image } from "react-native"
 import { StarIcon } from "react-native-heroicons/solid"
 import { MapPinIcon } from "react-native-heroicons/outline"
+import { urlFor } from "../sanity"
 
 const StyledTouchableOpacity = styled(TouchableOpacity)
 const StyledImage = styled(Image)
@@ -24,7 +25,7 @@ const RestaurantCard = ({
       <StyledTouchableOpacity className="bg-white mr-3 shadow">
          <StyledImage
             source={{
-               uri: imgUrl
+               uri: urlFor(imgUrl).url()
             }}
             className="w-64 h-36 rounded-sm"
          />
