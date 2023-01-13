@@ -35,7 +35,18 @@ export default defineType({
       defineField({
          name: "address",
          title: "Restaurant address",
-         type: "string"
+         type: "string",
+         validation: (Rule) => Rule.required()
+      }),
+      defineField({
+         name: "rating",
+         title: "Enter a Rating from (1-5 Starts)",
+         type: "number",
+         validation: (Rule) => 
+            Rule.required()
+               .min(1)
+               .max(5)
+               .error("Please enter a value between 1 and 5")
       }),
    ],
 })
