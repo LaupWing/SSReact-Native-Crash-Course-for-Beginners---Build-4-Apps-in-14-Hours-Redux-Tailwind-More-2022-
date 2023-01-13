@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native"
 import { styled } from "nativewind"
-import { useLayoutEffect } from "react"
+import { useEffect, useLayoutEffect, useState } from "react"
 import { Image, SafeAreaView, ScrollView, Text, TextInput, View } from "react-native"
 import {
    ChevronDownIcon, 
@@ -10,6 +10,7 @@ import {
 } from "react-native-heroicons/outline"
 import Categories from "../components/Categories"
 import FeaturedRow from "../components/FeaturedRow"
+import client from "../sanity"
 
 const StyledText = styled(Text)
 const StyledImage = styled(Image)
@@ -19,11 +20,24 @@ const StyledScrollView = styled(ScrollView)
 
 const HomeScreen = () => {
    const navigation = useNavigation()
+   const [featuredCategories, setFeaturedCategories] = useState([])
 
    useLayoutEffect(()=>{
       navigation.setOptions({
          headerShown: false
       })
+   }, [])
+
+   useEffect(() => {
+      client.fetch(`
+         *[_type == "featured"] {
+            ...,
+            restaurants[]->{
+               ...,
+               dishes[]->
+            }
+         }
+      `).then(data => setFeaturedCategories(data))
    }, [])
 
    return (
