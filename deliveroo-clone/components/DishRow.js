@@ -4,6 +4,8 @@ import { styled } from "nativewind"
 import Currency from "react-currency-formatter"
 import { urlFor } from "../sanity"
 import { MinusCircleIcon, PlusCircleIcon } from  "react-native-heroicons/solid"
+import { useDispatch, useSelector } from "react-redux"
+import { addToBasket, selectBasketItems } from "../features/basketSlice"
 
 const StyledTouchableOpacity = styled(TouchableOpacity)
 const StyledView = styled(View)
@@ -18,7 +20,17 @@ const DishRow = (
    image,
 ) => {
    const [isPressed, setIsPressed] = useState(false)
+   const dispatch = useDispatch()
+   const items = useSelector(selectBasketItems)
 
+   const addItemToBasket = () => {
+      dispatch(addToBasket({id,
+         name,
+         description,
+         price,
+         image
+      }))
+   }
 
    return (
       <>
@@ -57,8 +69,10 @@ const DishRow = (
                         size={40}
                      />
                   </StyledTouchableOpacity>
-                  <StyledText>0</StyledText>
-                  <StyledTouchableOpacity>
+                  <StyledText>{items.filter(x=>x.id === id).length}</StyledText>
+                  <StyledTouchableOpacity
+                     onPress={addItemToBasket}
+                  >
                      <PlusCircleIcon
                         // color={items.length > 0 ? "#00CCBB" : "gray"}
                         size={40}
