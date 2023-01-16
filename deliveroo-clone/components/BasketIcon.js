@@ -17,7 +17,10 @@ const BasketIcon = () => {
 
    return (
       <StyledView className="absolute bottom-10 w-full z-50">
-         <StyledTouchableOpacity className="mx-5 bg-[#00CCBB] flex-row rounded-lg flex-row items-center space-x-1">
+         <StyledTouchableOpacity 
+            className="mx-5 bg-[#00CCBB] flex-row rounded-lg flex-row items-center space-x-1"
+            onPress={() => navigation.navigate("Basket")}
+         >
             <StyledText className="text-white font-extrabold text-lg bg-[#01A296] py-1 px-2">
                {items.length}
             </StyledText>

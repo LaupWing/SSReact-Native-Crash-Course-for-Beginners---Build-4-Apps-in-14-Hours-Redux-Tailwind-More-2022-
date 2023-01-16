@@ -102,7 +102,7 @@ const RestaurantScreen = () => {
                </StyledTouchableOpacity>
             </StyledView>
 
-            <StyledView>
+            <StyledView className="pb-36">
                <StyledText className="px-4 pt-6 mb-3 font-bold text-xl">
                   Menu
                </StyledText>
