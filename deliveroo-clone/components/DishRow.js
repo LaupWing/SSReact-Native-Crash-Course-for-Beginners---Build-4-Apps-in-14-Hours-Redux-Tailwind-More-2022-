@@ -24,7 +24,7 @@ const DishRow = (
       <>
          <StyledTouchableOpacity 
             onPress={() => setIsPressed(!isPressed)} 
-            className="bg-white border p-4 border-gray-200"
+            className={`bg-white border p-4 border-gray-200 ${isPressed && "border-b-0"}`}
          >
             <StyledView className="flex-row">
                <StyledView className="flex-1 pr-2">
@@ -49,10 +49,17 @@ const DishRow = (
             </StyledView>
          </StyledTouchableOpacity>
          {isPressed && (
-            <StyledView>
-               <StyledView>
+            <StyledView className="bg-whtie px-4">
+               <StyledView className="flex-row items-center space-x-2 pb-3">
                   <StyledTouchableOpacity>
                      <MinusCircleIcon
+                        // color={items.length > 0 ? "#00CCBB" : "gray"}
+                        size={40}
+                     />
+                  </StyledTouchableOpacity>
+                  <StyledText>0</StyledText>
+                  <StyledTouchableOpacity>
+                     <PlusCircleIcon
                         // color={items.length > 0 ? "#00CCBB" : "gray"}
                         size={40}
                      />
