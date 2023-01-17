@@ -22,4 +22,10 @@ export const navSlice = createSlice({
    }
 })
 
+export const {
+   setDestination,
+   setOrigin,
+   setTravelTimeInformation
+} = navSlice.actions
+
 export default navSlice.reducer
