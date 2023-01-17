@@ -6,6 +6,7 @@ import { selectRestaurant } from "../features/restaurantSlice"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { XMarkIcon } from "react-native-heroicons/outline"
 import * as Progress from "react-native-progress"
+import MapView, { Marker } from "react-native-maps"
 
 const DeliveryScreen = () => {
    const navigation = useNavigation()
@@ -43,7 +44,45 @@ const DeliveryScreen = () => {
             </View>
          </SafeAreaView>
 
-         
+         <MapView
+            initialRegion={{
+               latitude: restaurant.lat,
+               longitude: restaurant.long,
+               latitudeDelta: 0.005,
+               longitudeDelta: 0.005
+            }}
+            className="flex-1 -mt-10 z-0"
+            mapType="mutedStandard"
+         >
+            <Marker
+               coordinate={{
+                  latitude: restaurant.lat,
+                  longitude: restaurant.long,
+               }}
+               title={restaurant.title}
+               description={restaurant.short_description}
+               identifier="origin"
+               pinColor="#00CCBB"
+            />
+         </MapView>
+
+         <SafeAreaView className="bg-white flex-row items-center space-x-5 h-28">
+            <Image
+               source={{
+                  uri: "https://papareact.com/wru"
+               }}
+               className="h-12 w-12 bg-gray-300 rounded-full ml-5"
+            />
+            <View className="flex-1">
+               <Text className="text-lg">
+                  Sonny Sangha
+               </Text>
+               <Text className="text-gray-400">
+                  Text rider
+               </Text>
+            </View>
+            <Text className="text-[#00CCBB] text-lg mr-5 font-bold">call</Text>
+         </SafeAreaView>
       </View>
    )
 }
