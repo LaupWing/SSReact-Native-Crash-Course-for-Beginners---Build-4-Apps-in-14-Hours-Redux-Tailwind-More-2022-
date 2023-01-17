@@ -131,7 +131,10 @@ const BasketScreen = () => {
                </StyledView>
             </StyledView>
             
-            <StyledTouchableOpacity className="rounded-lg bg-[#00CCBB] p-4">
+            <StyledTouchableOpacity 
+               className="rounded-lg bg-[#00CCBB] p-4"
+               onPress={()=> navigation.navigate("PreparingOrder")}
+            >
                <StyledText className="text-center text-white text-lg font-bold">
                   Placeholder
                </StyledText>

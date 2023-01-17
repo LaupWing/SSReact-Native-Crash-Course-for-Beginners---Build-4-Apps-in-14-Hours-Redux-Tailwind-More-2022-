@@ -5,6 +5,7 @@ import { StatusBar } from "react-native"
 import { Provider } from "react-redux"
 import BasketScreen from "./screens/BasketScreen"
 import HomeScreen from "./screens/HomeScreen"
+import PreparingOrderScreen from "./screens/PreparingOrderScreen"
 import RestaurantScreen from "./screens/RestaurantScreen"
 import { store } from "./store"
 
@@ -24,6 +25,14 @@ const App = () => {
                   component={BasketScreen}
                   options={{
                      presentation: "modal",
+                     headerShown: false
+                  }}
+                  />
+               <Stack.Screen 
+                  name="PreparingOrder" 
+                  component={PreparingOrderScreen}
+                  options={{
+                     presentation: "fullScreenModal",
                      headerShown: false
                   }}
                />
