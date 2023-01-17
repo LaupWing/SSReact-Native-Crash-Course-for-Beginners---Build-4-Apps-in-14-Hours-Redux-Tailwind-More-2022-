@@ -4,7 +4,7 @@ import React from "react"
 const Homescreen = () => {
    return (
       <SafeAreaView>
-         <Text>Homescreen</Text>
+         <Text className="text-red-400">Homescreen</Text>
       </SafeAreaView>
    )
 }
