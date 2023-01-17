@@ -28,4 +28,8 @@ export const {
    setTravelTimeInformation
 } = navSlice.actions
 
+export const selectOrigin = state => state.origin 
+export const selectDestination = state => state.destination 
+export const selectTravelTimeInformation = state => state.travelTimeInformation 
+
 export default navSlice.reducer
