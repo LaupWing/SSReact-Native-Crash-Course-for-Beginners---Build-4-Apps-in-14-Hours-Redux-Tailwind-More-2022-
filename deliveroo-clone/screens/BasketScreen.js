@@ -131,8 +131,10 @@ const BasketScreen = () => {
                </StyledView>
             </StyledView>
             
-            <StyledTouchableOpacity>
-               
+            <StyledTouchableOpacity className="rounded-lg bg-[#00CCBB] p-4">
+               <StyledText className="text-center text-white text-lg font-bold">
+                  Placeholder
+               </StyledText>
             </StyledTouchableOpacity>
          </StyledView>
       </StyledSafeAreaView>
