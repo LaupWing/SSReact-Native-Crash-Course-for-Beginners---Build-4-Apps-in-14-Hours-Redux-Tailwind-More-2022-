@@ -7,12 +7,15 @@ const Homescreen = () => {
          <View className="p-5">
             <Image
                source={{
-                  uri: "https://links.papareact/gzs"
+                  uri: "https://links.papareact.com/gzs"
                }}
-               className="w-full h-full object-contain"
+               className="w-24 h-24"
+               style={{
+                  resizeMode: "contain"
+               }}
             />
          </View>
-         <Text className="text-red-400 p-10">Homescreen</Text>
+         <Text className="text-red-400 p-10">Test</Text>
       </SafeAreaView>
    )
 }
