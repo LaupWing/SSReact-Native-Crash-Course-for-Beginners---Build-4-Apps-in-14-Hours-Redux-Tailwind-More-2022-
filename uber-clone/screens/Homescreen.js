@@ -17,7 +17,6 @@ const Homescreen = () => {
             />
             <NavOptions/>
          </View>
-         <Text className="text-red-400 p-10">Test</Text>
       </SafeAreaView>
    )
 }
