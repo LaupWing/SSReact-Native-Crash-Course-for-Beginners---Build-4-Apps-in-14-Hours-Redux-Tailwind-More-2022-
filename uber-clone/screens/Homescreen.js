@@ -1,5 +1,6 @@
 import { View, Text, SafeAreaView, Image } from "react-native"
 import React from "react"
+import NavOptions from "../components/NavOptions"
 
 const Homescreen = () => {
    return (
@@ -14,6 +15,7 @@ const Homescreen = () => {
                   resizeMode: "contain"
                }}
             />
+            <NavOptions/>
          </View>
          <Text className="text-red-400 p-10">Test</Text>
       </SafeAreaView>
