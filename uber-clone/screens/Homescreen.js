@@ -1,8 +1,11 @@
 import { View, Text, SafeAreaView, Image } from "react-native"
 import React from "react"
 import NavOptions from "../components/NavOptions"
+import { useNavigation } from "@react-navigation/native"
 
 const Homescreen = () => {
+   const navigation = useNavigation()
+
    return (
       <SafeAreaView className="bg-white h-full">
          <View className="p-5">
