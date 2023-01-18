@@ -1,4 +1,4 @@
-import { View, Text, FlatList, TouchableOpacity } from "react-native"
+import { View, Text, FlatList, TouchableOpacity, Image } from "react-native"
 import React from "react"
 
 const data = [
@@ -24,9 +24,18 @@ const NavOptions = () => {
          keyExtractor={(item) => item.id}
          renderItem={({ item }) => (
             <TouchableOpacity>
-               <Text>
-                  {item.title}
-               </Text>
+               <View>
+                  <Image
+                     source={{
+                        uri: item.image
+                     }}
+                     className="w-32 h-32"
+                     resizeMode="contain"
+                  />
+                  <Text>
+                     {item.title}
+                  </Text>
+               </View>
             </TouchableOpacity>
          )}
       />
