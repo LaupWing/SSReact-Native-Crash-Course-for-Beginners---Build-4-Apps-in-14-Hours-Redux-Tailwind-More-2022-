@@ -23,6 +23,16 @@ const Map = () => {
       })
    }, [origin, destination])
 
+   useEffect(() => {
+      if(!origin || !destination){
+         return
+      }
+
+      const getTravelTime = async () => {
+         const URL = `test.com`
+      }
+   }, [origin, destination, "API"])
+
    return (
       <MapView
          ref={mapRef}
