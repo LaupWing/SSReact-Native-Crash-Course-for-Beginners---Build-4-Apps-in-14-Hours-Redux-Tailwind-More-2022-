@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import MapView, { Marker } from "react-native-maps"
 import MapViewDirections from "react-native-maps-directions"
 import { useSelector } from "react-redux"
@@ -7,9 +7,25 @@ import { selectDestination, selectOrigin } from "../slices/navSlice"
 const Map = () => {
    const origin = useSelector(selectOrigin)
    const destination = useSelector(selectDestination)
+   const mapRef = useRef(null)
+
+   useEffect(() => {
+      if(!origin || !destination){
+         return
+      }
+      mapRef.current.fitToSuppliedMarkers(["origin", "destination"], {
+         edgePadding: {
+            top: 50,
+            left: 50,
+            right: 50,
+            bottom: 50,
+         }
+      })
+   }, [origin, destination])
 
    return (
       <MapView
+         ref={mapRef}
          className="flex-1"
          mapType="mutedStandard"
          initialRegion={{
@@ -37,6 +53,17 @@ const Map = () => {
                title="Origin"
                description={origin.description}
                identifier="origin"
+            />
+         )}
+         {origin?.destination && (
+            <Marker 
+               coordinate={{
+                  latitude: destination.location.lat,
+                  longitude: destination.location.long,
+               }}
+               title="Destination"
+               description={destination.description}
+               identifier="destination"
             />
          )}
       </MapView>
