@@ -1,10 +1,10 @@
-import { View, Text } from "react-native"
+import { View, Text, SafeAreaView } from "react-native"
 
 const RideOptionsCard = () => {
    return (
-      <View>
+      <SafeAreaView>
          <Text>RideOptionsCard</Text>
-      </View>
+      </SafeAreaView>
    )
 }
 export default RideOptionsCard

@@ -1,8 +1,10 @@
 import { useNavigation } from "@react-navigation/native"
-import { Text, SafeAreaView } from "react-native"
+import { Icon } from "@rneui/base"
+import { Text, SafeAreaView, TouchableOpacity } from "react-native"
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete"
 import { useDispatch } from "react-redux"
 import { setDestination } from "../slices/navSlice"
+import NavFavorites from "./NavFavorites"
 
 const NavigateCard = () => {
    const dispatch = useDispatch()
@@ -32,6 +34,20 @@ const NavigateCard = () => {
                   }}
                />
             </View>
+            <NavFavorites/>
+         </View>
+         <View className="flex-row bg-white justify-evenly py-2 mt-auto border-t border-gray-100">
+            <TouchableOpacity 
+               onPress={() => navigation.navigate("RideOptionsCard")}
+               className="flex flex-row justify-between bg-black w-24 px-4 py-3 rounded-full"
+            >
+               <Icon name="car" type="font-awesome" color={"white"} size={16}/>
+               <Text className="text-white text-center">Rides</Text>
+            </TouchableOpacity>
+            <TouchableOpacity className="flex flex-row justify-between bg-black w-24 px-4 py-3 rounded-full">
+               <Icon name="car" type="font-awesome" color={"black"} size={16}/>
+               <Text className="text-white text-center">Rides</Text>
+            </TouchableOpacity>
          </View>
       </SafeAreaView>
    )
