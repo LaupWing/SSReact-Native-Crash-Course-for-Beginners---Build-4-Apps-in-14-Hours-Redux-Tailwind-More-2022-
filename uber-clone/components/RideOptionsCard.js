@@ -5,6 +5,8 @@ import { View, Text, SafeAreaView, TouchableOpacity, FlatList, Image } from "rea
 import { useSelector } from "react-redux"
 import { selectTravelTimeInformation } from "../slices/navSlice"
 
+const SURGE_CHARGE_RATE = 1.5
+
 const RideOptionsCard = () => {
    const navigation = useNavigation()
    const [selected, setSelected] = useState(null)
@@ -45,7 +47,14 @@ const RideOptionsCard = () => {
                      <Text className="text-xl font-semibold">{item.title}</Text>
                      <Text className="">{travelTimeInformation?.duration.text} TravelTime</Text>
                   </View>
-                  <Text className="text-xl">99</Text>
+                  <Text className="text-xl">
+                     {new Intl.NumberFormat("en-gb", {
+                        style: "currency",
+                        currency: "GBP"
+                     }).format(
+                        (travelTimeInformation?.duration.value * SURGE_CHARGE_RATE) * item.multiplier / 100
+                     )}
+                  </Text>
                </TouchableOpacity>
             )}
          />
