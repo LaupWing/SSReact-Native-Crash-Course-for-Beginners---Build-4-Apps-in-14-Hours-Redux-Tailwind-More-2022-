@@ -1,12 +1,13 @@
 import React, { useEffect, useRef } from "react"
 import MapView, { Marker } from "react-native-maps"
 import MapViewDirections from "react-native-maps-directions"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { selectDestination, selectOrigin } from "../slices/navSlice"
 
 const Map = () => {
    const origin = useSelector(selectOrigin)
    const destination = useSelector(selectDestination)
+   const dispatch = useDispatch()
    const mapRef = useRef(null)
 
    useEffect(() => {
@@ -29,8 +30,14 @@ const Map = () => {
       }
 
       const getTravelTime = async () => {
-         const URL = `test.com`
+         const URL = fetch(`test.com`)
+            .then(res => res.json())
+            .then(data => {
+               dispatch()
+            })
       }
+
+      getTravelTime()
    }, [origin, destination, "API"])
 
    return (
