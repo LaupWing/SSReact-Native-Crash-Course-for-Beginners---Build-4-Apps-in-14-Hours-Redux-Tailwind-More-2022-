@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react"
 import MapView, { Marker } from "react-native-maps"
 import MapViewDirections from "react-native-maps-directions"
 import { useDispatch, useSelector } from "react-redux"
-import { selectDestination, selectOrigin } from "../slices/navSlice"
+import { selectDestination, selectOrigin, setTravelTimeInformation } from "../slices/navSlice"
 
 const Map = () => {
    const origin = useSelector(selectOrigin)
@@ -33,7 +33,7 @@ const Map = () => {
          const URL = fetch(`test.com`)
             .then(res => res.json())
             .then(data => {
-               dispatch()
+               dispatch(setTravelTimeInformation(data.rows[0].elements[0]))
             })
       }
 
