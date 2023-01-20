@@ -30,7 +30,7 @@ const Map = () => {
       }
 
       const getTravelTime = async () => {
-         const URL = fetch(`test.com`)
+         fetch(`test.com`)
             .then(res => res.json())
             .then(data => {
                dispatch(setTravelTimeInformation(data.rows[0].elements[0]))
