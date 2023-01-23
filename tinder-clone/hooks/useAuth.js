@@ -5,6 +5,7 @@ const AuthContext = createContext({})
 
 const config = {
    iosClientId: "ios_key",
+   androidClientId: "ios_key",
    scopes: ["profile", "email"],
    permissions: ["public_profile", "email", "gender", "location"]
 }
