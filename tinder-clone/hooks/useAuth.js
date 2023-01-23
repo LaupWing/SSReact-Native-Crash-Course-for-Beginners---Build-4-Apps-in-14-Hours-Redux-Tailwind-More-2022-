@@ -5,7 +5,7 @@ const AuthContext = createContext({})
 
 const config = {
    iosClientId: "ios_key",
-   androidClientId: "ios_key",
+   androidClientId: "android_key",
    scopes: ["profile", "email"],
    permissions: ["public_profile", "email", "gender", "location"]
 }
@@ -13,11 +13,18 @@ const config = {
 export const AuthProvider = ({ children }) => {
 
    const signInWithGoogle = async () => {
-      await Google.useAuthRequest()
+      Google.loadAsync(config).then(async (result) =>{
+         if(result.responseType === "success"){
+
+         }
+      })
    }
    
    return (
-      <AuthContext.Provider value={null}>
+      <AuthContext.Provider value={{
+         user:null,
+         signInWithGoogle
+      }}>
          {children}
       </AuthContext.Provider>
    )
