@@ -1,5 +1,7 @@
 import { createContext, useContext } from "react"
 import * as Google from "expo-auth-session"
+import { GoogleAuthProvider, signInWithCredential } from "firebase/auth"
+import { auth } from "../firebase"
 
 const AuthContext = createContext({
    user: null,
@@ -18,8 +20,12 @@ export const AuthProvider = ({ children }) => {
    const signInWithGoogle = async () => {
       Google.loadAsync(config).then(async (result) =>{
          if(result.responseType === "success"){
-            
+            const {idToken, accessToken}= result
+            const credential = GoogleAuthProvider.credential(idToken, accessToken)
+
+            await signInWithCredential(auth, credential)
          }
+         return Promise.reject()
       })
    }
    
