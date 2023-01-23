@@ -3,6 +3,12 @@ import * as Google from "expo-auth-session"
 
 const AuthContext = createContext({})
 
+const config = {
+   iosClientId: "ios_key",
+   scopes: ["profile", "email"],
+   permissions: ["public_profile", "email", "gender", "location"]
+}
+
 export const AuthProvider = ({ children }) => {
 
    const signInWithGoogle = async () => {
