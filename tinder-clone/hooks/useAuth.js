@@ -1,6 +1,6 @@
-import { createContext, useContext } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 import * as Google from "expo-auth-session"
-import { GoogleAuthProvider, signInWithCredential } from "firebase/auth"
+import { GoogleAuthProvider, onAuthStateChanged, signInWithCredential } from "firebase/auth"
 import { auth } from "../firebase"
 
 const AuthContext = createContext({
@@ -16,6 +16,21 @@ const config = {
 }
 
 export const AuthProvider = ({ children }) => {
+   const [error, setError] = useState("")
+   const [user, setUser] = useState(null)
+   const [loadingInitial, setLoadingInitial] = useState(true)
+
+   useEffect(() => {
+      const unsub = onAuthStateChanged(auth, user =>{
+         if(user){
+            setUser(user)
+         }else {
+            setUser(null)
+         }
+         setLoadingInitial(false)
+      })
+      return unsub()
+   }, [])
 
    const signInWithGoogle = async () => {
       Google.loadAsync(config).then(async (result) =>{
@@ -27,11 +42,12 @@ export const AuthProvider = ({ children }) => {
          }
          return Promise.reject()
       })
+      .catch(err => setError(err.message))
    }
    
    return (
       <AuthContext.Provider value={{
-         user:null,
+         user,
          signInWithGoogle
       }}>
          {children}
