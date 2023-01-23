@@ -1,7 +1,10 @@
 import { createContext, useContext } from "react"
 import * as Google from "expo-auth-session"
 
-const AuthContext = createContext({})
+const AuthContext = createContext({
+   user: null,
+   signInWithGoogle: () => {}
+})
 
 const config = {
    iosClientId: "ios_key",
@@ -15,7 +18,7 @@ export const AuthProvider = ({ children }) => {
    const signInWithGoogle = async () => {
       Google.loadAsync(config).then(async (result) =>{
          if(result.responseType === "success"){
-
+            
          }
       })
    }
