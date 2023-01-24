@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native"
-import { useLayoutEffect, useRef } from "react"
+import { useEffect, useLayoutEffect, useRef } from "react"
 import { View, Text, Button, SafeAreaView, TouchableOpacity, Image, StyleSheet } from "react-native"
 import useAuth from "../hooks/useAuth"
 import { AntDesign, Entypo, Ionicons } from "@expo/vector-icons"
@@ -9,6 +9,14 @@ const HomeScreen = () => {
    const navigation = useNavigation()
    const { user, logout } = useAuth()
    const swipeRef = useRef(null)
+
+   useLayoutEffect(() => {
+      
+   }, [])
+
+   useEffect(()=>{
+
+   }, [])
 
    return (
       <SafeAreaView className="flex-1">
@@ -74,7 +82,7 @@ const HomeScreen = () => {
                      }
                   },
                }}
-               renderCard={card => (
+               renderCard={card => card ? (
                   <View 
                      className="bg-white h-3/4 rounded-xl relative"
                      key={card.id}
@@ -95,6 +103,10 @@ const HomeScreen = () => {
                         </View>
                         <Text className="text-2xl">{card.age}</Text>
                      </View>
+                  </View>
+               ) : (
+                  <View>
+                     <Text>No profiles</Text>
                   </View>
                )}
             />
