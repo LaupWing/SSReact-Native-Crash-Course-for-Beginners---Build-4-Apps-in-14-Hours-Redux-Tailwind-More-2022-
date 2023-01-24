@@ -1,21 +1,41 @@
 import { useNavigation } from "@react-navigation/native"
-import { useEffect, useLayoutEffect, useRef } from "react"
+import { useEffect, useLayoutEffect, useRef, useState } from "react"
 import { View, Text, Button, SafeAreaView, TouchableOpacity, Image, StyleSheet } from "react-native"
 import useAuth from "../hooks/useAuth"
 import { AntDesign, Entypo, Ionicons } from "@expo/vector-icons"
 import Swiper from "react-native-deck-swiper"
+import { collection, doc, onSnapshot } from "firebase/firestore"
 
 const HomeScreen = () => {
    const navigation = useNavigation()
    const { user, logout } = useAuth()
+   const [profiles, setProfiles] = useState()
    const swipeRef = useRef(null)
 
    useLayoutEffect(() => {
-      
+      const unsub = onSnapshot(doc(db, "users", user.uid) ,snapshot => {
+         if(!snapshot.exists()){
+            navigation.navigate("Modal")
+         }
+      })
+
+      return unsub()
    }, [])
 
    useEffect(()=>{
+      let unsub
 
+      const fetchCards = async () => {
+         unsub = onSnapshot(collection(db, "users"), snapshot => {
+            setProfiles(snapshot.docs.map(doc => ({
+               ...doc.data,
+               id: doc.id
+            })))
+         }) 
+      }
+
+      fetchCards()
+      return unsub
    }, [])
 
    return (
