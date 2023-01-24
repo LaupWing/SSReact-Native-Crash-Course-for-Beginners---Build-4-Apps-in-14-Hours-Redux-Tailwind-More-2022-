@@ -24,7 +24,7 @@ const HomeScreen = () => {
                   className="h-10 w-10 rounded-full"
                />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Modal")}>
                <Image 
                   source={require("../logo.png")}
                   className="h-14 w-14"
