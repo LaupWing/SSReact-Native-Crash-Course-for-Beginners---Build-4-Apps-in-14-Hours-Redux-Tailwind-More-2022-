@@ -4,8 +4,9 @@ import { View, Text, Button, SafeAreaView, TouchableOpacity, Image, StyleSheet }
 import useAuth from "../hooks/useAuth"
 import { AntDesign, Entypo, Ionicons } from "@expo/vector-icons"
 import Swiper from "react-native-deck-swiper"
-import { collection, doc, getDocs, onSnapshot, query, setDoc, where } from "firebase/firestore"
+import { collection, doc, getDoc, getDocs, onSnapshot, query, serverTimestamp, setDoc, where } from "firebase/firestore"
 import { db } from "../firebase"
+import { generateId } from "../lib/generateId"
 
 const HomeScreen = () => {
    const navigation = useNavigation()
@@ -61,7 +62,30 @@ const HomeScreen = () => {
       }
       const userSwiped = profiles[cardIndex]
       console.log(`You swiped match on ${userSwiped.displayname}`)
+      const loggedinProfile = await(await getDoc(db, "users", user.uid)).data()
 
+      getDoc(doc(db, "users", userSwiped.id, "swipes", user.uid)).then(snapshot =>{
+         if(snapshot.exists()){
+            setDoc(doc(
+               db, 
+               "matches", 
+               generateId(user.uid, userSwiped.id), 
+               {
+                  users: {
+                     [user.uid]: loggedinProfile,
+                     [userSwiped.id]: userSwiped
+                  },
+                  usersMatch: [user.id, userSwiped.id],
+                  timestamp: serverTimestamp()
+               }
+            ), userSwiped)
+            navigation.navigate("Match", {
+               loggedinProfile,
+               userSwiped
+            })
+         }
+      })
+      
       setDoc(doc(db, "users", user.uid, "swipes", userSwiped.id), userSwiped)
    }
 
