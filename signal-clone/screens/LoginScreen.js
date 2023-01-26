@@ -3,7 +3,7 @@ import { StatusBar } from "expo-status-bar"
 import { useState } from "react"
 import { View, Text, KeyboardAvoidingView } from "react-native"
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}) => {
    const [email, setEmail] = useState("")
    const [password, setPassword] = useState("")
 
@@ -58,6 +58,7 @@ const LoginScreen = () => {
                marginTop: 10
             }} 
             title={"Register"}
+            onPress={() => navigation.navigate("Register")}
          />
          <View className="h-20"/>
       </KeyboardAvoidingView>
