@@ -11,7 +11,7 @@ const RegisterScreen = ({navigation}) => {
    const register = () => {
       auth.createUserWithEmailAndPassword(name, name)
          .then(user => {
-            user.user.update({
+            user.user.updateProfile({
                displayName: name,
                photoURL: ""
             })

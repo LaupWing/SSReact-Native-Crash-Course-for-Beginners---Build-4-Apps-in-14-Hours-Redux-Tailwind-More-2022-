@@ -1,11 +1,21 @@
 import { Button, Image, Input } from "@rneui/base"
 import { StatusBar } from "expo-status-bar"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { View, Text, KeyboardAvoidingView } from "react-native"
+import { auth } from "../firebase"
 
 const LoginScreen = ({navigation}) => {
    const [email, setEmail] = useState("")
    const [password, setPassword] = useState("")
+
+   useEffect(() => {
+      const unsub = auth.onAuthStateChanged(user => {
+         if(user){
+            navigation.replace("Home")
+         }
+      })
+      return unsub
+   }, [])
 
    const signIn = () => {
 
