@@ -7,7 +7,7 @@ const CustomListItem = ({
    enterChat
 }) => {
    return (
-      <ListItem>
+      <ListItem onPress={() => enterChat(id, enterChat)} key={id} bottomDivider>
          <Avatar
             rounded
             source={{
@@ -16,7 +16,7 @@ const CustomListItem = ({
          />
          <ListItem.Content>
             <ListItem.Title className="font-bold">
-               Test
+               {chatName}
             </ListItem.Title>
             <ListItem.Subtitle numberOfLines={1} ellipsizeMode="tail">
                Lorem ipsum dolor sit amet consectetur adipisicing elit.
