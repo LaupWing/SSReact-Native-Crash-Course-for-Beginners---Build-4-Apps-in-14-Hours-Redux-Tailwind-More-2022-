@@ -18,7 +18,7 @@ const ChatScreen = ({navigation, route}) => {
          headerTitle: () => (
             <View className="flex-row items-center">
                <Avatar rounded source={{
-                  uri: ""
+                  uri: messages[0]?.data.photoURL || "" 
                }}/>
                <Text className="font-bold text-white ml-3">{route.params.chatName}</Text>
             </View>
@@ -39,7 +39,7 @@ const ChatScreen = ({navigation, route}) => {
             </View>
          )
       })
-   }, [navigation])
+   }, [navigation, messages])
 
    const sendMessage = () => {
       Keyboard.dismiss()
@@ -74,7 +74,7 @@ const ChatScreen = ({navigation, route}) => {
             keyboardVerticalOffset={90}
          >
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-               <ScrollView>
+               <ScrollView contentContainerStyle={{paddingTop: 15}}>
                   {messages.map(message => (
                      message.email === auth.currentUser.email 
                         ? (
